@@ -2,5 +2,7 @@
 <h2>About<h2>
 <p>This github repository contains all the project work of PMARINA's independent study.<p>
 <h2>Projects:<h2>
-1. Image Processing
-2. Document Scanner
+<ol>
+<li>Image Processing
+<li>Document Scanner
+</ol>
