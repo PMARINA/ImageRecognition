@@ -8,7 +8,7 @@ Instructions:
 3) Run the program
 4) Use 'q' and 'e' keys to play with the gaussian blur settings: 'q' makes it go less (starting at the minimum, so it won't go any further) and 'e' makes it blur more.
 5) Use 'w', 'a', 's', 'd' keys to play with the boundaries for the Canny algorithm. Use 'a' and 'd' to modify the lower boundary, and 'w' and 's' to modify the upper boundary.
-6) This is a continuation of 5, but I ran out of space: 'a' and 's' are for making the value smaller, 'd' and 'w' are for making it bigger.  
+6) This is a continuation of 5, but I ran out of space: 'a' and 's' are for making the value smaller, 'd' and 'w' are for making it bigger.
 '''
 import cv2  # Yes, you need OpenCV Installed
 
