@@ -1,3 +1,6 @@
-<h1>Hello World!<h1>
-<h1>Projects:<h1>
-(1) Image Processing
+<h1>PMARINA Independent Study<h1>
+<h2>About<h2>
+<p>This github repository contains all the project work of PMARINA's independent study.<p>
+<h2>Projects:<h2>
+1. Image Processing
+2. Document Scanner
