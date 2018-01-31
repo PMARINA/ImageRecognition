@@ -24,7 +24,7 @@ Returns the image, as provided in the path, which is hard coded below
 
 
 def getImage():
-    return cv2.imread("C:/users/bluer/Desktop/WIN_20171114_13_48_53_Pro.jpg")
+    return cv2.imread("C:/users/bluer/Desktop/reco3.jpg")
 
 
 '''
@@ -54,14 +54,18 @@ def resizeImage(img):
 '''
 Main Logic
 '''
-cap = cv2.VideoCapture(0)  # Get the camera
+# cap = cv2.VideoCapture(0)  # Get the camera
 boundryLower = 0
 boundryUpper = 50
-num = 1
+num = 20
+num1 = 10
+num2 = 10
 while(True):
-    ret, img = cap.read()
+    #ret, img = cap.read()
+    img = getImage()
     # Using settings that are HARDCODED, the library is returning the edges
-    edges = ImageProcessor.edges(img, boundryLower, boundryUpper, num)
+    edges = ImageProcessor.bilateralFilterEdges(
+        img, boundryLower, boundryUpper, num, num1, num2)
     # it's showing the image, so (1) I know I have the right picture and (2) if/when the script breaks, I might be able to use this to help me debug
     cv2.imshow("", edges)
     # cv2.destroyAllWindows()
@@ -77,10 +81,11 @@ while(True):
             their endpoints stored for diag/hor/vert segments, as opposed to storing every single point
 
     '''
-    (contoursFound, _) = cv2.findContours(
-        edges.copy(), cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+    #(contoursFound, _) = cv2.findContours(
+#        edges.copy(), cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
     '''
     As you can tell from the following command, I take the contours and sort them by their contour area...
+    '''
     '''
     contoursFound = sorted(
         contoursFound, key=cv2.contourArea, reverse=True)[:10]
@@ -106,11 +111,12 @@ while(True):
     absmin = max(dist)
     # the index of the array that contains the max area... yes, there's probably a cleaner&easier way to do this
     ind = dist.index(absmin)
-    screenCnt = cnthold[ind][0]  # Final contour = the one with most area
+    # screenCnt = cnthold[ind][0]  # Final contour = the one with most area
     # Draw the contour on the image so I know if it worked
-    cv2.drawContours(img, [screenCnt], -1, (0, 255, 0), 2)
-    cv2.imshow("1", img)
+    #cv2.drawContours(img, [screenCnt], -1, (0, 255, 0), 2)
+    #cv2.imshow("1", img)
     # set to 0, if you don't want a stream, but rather an image at a time. If the machine is running slowly, increase the wait time (in milliseconds)
+    '''
     key = cv2.waitKey(1)
     if key == 27:  # escape key to exit
         break
@@ -128,10 +134,22 @@ while(True):
         boundryLower += 10
     # If num<=1, then gaussian blur breaks. It also has to be odd, or else it will also break (hence, multiples of 2 added to 1).
     if key == 113 and num > 1:
-        num -= 2
+        num -= 50
     if key == 101:
-        num += 2
-
+        num += 50
+    if key == 49:
+        num1 -= 50
+    if key == 50:
+        num1 += 50
+    if key == 52:
+        num2 -= 50
+    if key == 53:
+        num2 += 50
+print boundryLower
+print boundryUpper
+print num
+print num1
+print num2
 # ImageProcessor.saveImage(img, "C:/users/bluer/Desktop/reco2.jpg")#Save the output image
 # os.system("start " + "C:/users/bluer/Desktop/reco2.jpg")#Open it
 '''

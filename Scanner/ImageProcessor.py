@@ -52,6 +52,18 @@ def edges(image, boundryLower, boundryUpper, num):
     return contours
 
 
+def medianBlurEdges(image, boundryLower, boundryUpper, num=1):
+    noiselessImage = cv2.medianBlur(image, num)
+    contours = cv2.Canny(noiselessImage, boundryLower, boundryUpper)
+    return contours
+
+
+def bilateralFilterEdges(image, boundryLower, boundryUpper, d=10, sC=2, sS=0):
+    noiselessImage = cv2.bilateralFilter(image, d, sC, sS)
+    contours = cv2.Canny(noiselessImage, boundryLower, boundryUpper)
+    return contours
+
+
 '''
 This method shows the image to the user, through the cv2 library
 '''
