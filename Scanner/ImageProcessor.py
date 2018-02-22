@@ -18,7 +18,7 @@ HEIGHT = 720  # Height of the display
 # Making a tuple because I'm lazy (hint: not a setting to be changed)
 DIMENSIONS = (WIDTH, HEIGHT)
 # Modify, based on the path of your test image.
-PATH = "C:/Users/bluer/Desktop/WIN_20171114_13_48_33_Pro.jpg"
+PATH = "/home/Documents/github/ImageRecognition/Scanner/Images/WIN_20171114_13_48_33_Pro.jpg"
 '''
 This method exists to return the inverted color version of the image submitted.
 Note that this method only works SUCCESSFULLY on black and white images. Grayscale not supported.

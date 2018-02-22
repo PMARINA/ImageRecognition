@@ -27,7 +27,7 @@ Returns the image, as provided in the path, which is hard coded below
 
 
 def getImage():
-    return cv2.imread("C:/users/bluer/Desktop/Input (3).jpg")
+    return cv2.imread("/home/pmarina/Documents/github/ImageRecognition/Scanner/Images/img.jpg")
 
 
 '''
@@ -169,7 +169,7 @@ edges = cv2.bilateralFilter(edges, 10, 10, 0)
 resizeImage(edges)
 edges = cv2.Laplacian(edges, cv2.CV_32F)
 edges = np.uint8(edges)
-ImageProcessor.saveImage(edges, "C:/users/bluer/Desktop/reco3.jpg")
+ImageProcessor.saveImage(edges, "/home/pmarina/Documents/github/ImageRecognition/Scanner/Images/reco3.jpg")
 # This line only change the type, not values
 resizeImage(edges)
 edges = ImageProcessor.medianBlurEdges(edges, 10, 30, 5)
@@ -254,10 +254,10 @@ warped = cv2.warpPerspective(img, M, (2048, 1536))
 
 #cv2.drawContours(img, p2, -1, (255, 0, 0), 50)
 cv2.drawContours(img, p1, -1, (0, 0, 255), 50)
-ImageProcessor.saveImage(img, "C:/users/bluer/Desktop/reco1.jpg")
-ImageProcessor.saveImage(warped, "C:/users/bluer/Desktop/reco2.jpg")
-os.system("start " + "C:/users/bluer/Desktop/reco2.jpg")  # Open it
-os.system("start " + "C:/users/bluer/Desktop/reco1.jpg")  # Open it
+ImageProcessor.saveImage(img, "/home/pmarina/Documents/github/ImageRecognition/Scanner/Images/reco1.jpg")
+ImageProcessor.saveImage(warped, "/home/pmarina/Documents/github/ImageRecognition/Scanner/Images/reco2.jpg")
+#os.system("start " + "C:/users/bluer/Desktop/reco2.jpg")  # Open it
+#os.system("start " + "C:/users/bluer/Desktop/reco1.jpg")  # Open it
 '''
 Closing thoughts: I should probably add most of what's in my main method to the ImageProcessor file so it's part of my library (for contours), but that's out of the question until I can figure out how to do this without hardcoding in parameters for the edge function (see laplacian algorithm comment in email)
 '''
